@@ -43,11 +43,14 @@ NodeJsTutorialApp.get("/", ()=> {
 })
 
 NodeJsTutorialApp.get("/users",(req, res) => {
-  return res.json({
-    name: "Oluwatomi Fowobaje",
-    age: 17,
-    sex: "Female"
-  })
+    const {name, age, gender} = req.query;
+    res.status(200).json({
+        status: "Sucessful!",
+        message: "Search result found",
+        data:{
+            name, age, gender
+        }
+    })
 })
 NodeJsTutorialApp.listen(4000, () =>{
   console.log("The code is logging in the port " + `${port}`)
